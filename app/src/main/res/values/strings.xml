@@ -3,4 +3,20 @@
     <string name="first_line_message_error">Какой-то сверхразум все сломал</string>
     <string name="second_line_message_error">Постараемся все починить</string>
     <string name="try_again">Попробовать снова</string>
+
+    <!-- Department's name -->
+    <string name="All">Все</string>
+    <string name="Android">Android</string>
+    <string name="IOS">IOS</string>
+    <string name="Design">Дизайн</string>
+    <string name="Management">Менеджмент</string>
+    <string name="QA">QA</string>
+    <string name="BackOffice">Бэк-офис</string>
+    <string name="Frontend">Frontend</string>
+    <string name="HR">HR</string>
+    <string name="PR">PR</string>
+    <string name="Backend">Backend</string>
+    <string name="Support">Техподдержка</string>
+    <string name="Analytics">Аналитика</string>
+
 </resources>

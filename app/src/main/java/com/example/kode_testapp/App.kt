@@ -1,6 +1,9 @@
 package com.example.kode_testapp
 
 import android.app.Application
+import com.example.kode_testapp.pojo.Department
+import com.example.kode_testapp.repositories.DepartmentStorage
+import com.example.kode_testapp.repositories.ResourceDepartmentNameProvider
 import com.example.kode_testapp.repositories.WorkersRepository
 import com.example.kode_testapp.retrofit.WorkersApi
 import okhttp3.OkHttpClient
@@ -13,14 +16,16 @@ class App: Application() {
 
     lateinit var workersApi: WorkersApi
 
+    var departmentList = emptyList<Department>()
+
     lateinit var workersRepository: WorkersRepository
 
     override fun onCreate() {
         super.onCreate()
         configureRetrofit()
+        initDepartmentList()
 
         workersRepository = WorkersRepository(workersApi)
-        workersRepository.loadWorkers()
     }
 
     private fun configureRetrofit() {
@@ -39,6 +44,12 @@ class App: Application() {
             .build()
 
         workersApi = retrofit.create(WorkersApi::class.java)
+    }
+
+    private fun initDepartmentList() {
+        val resourceDepartmentNameProvider = ResourceDepartmentNameProvider(applicationContext)
+        val departmentStorage = DepartmentStorage(resourceDepartmentNameProvider)
+        departmentList = departmentStorage.getDepartments()
     }
 
 }
