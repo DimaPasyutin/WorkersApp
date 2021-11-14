@@ -12,7 +12,7 @@ import com.example.kode_testapp.pojo.DepartmentType
 import com.example.kode_testapp.retrofit.Worker
 import com.example.kode_testapp.screens.main_page.DepartmentPage
 
-class ViewPagerAdapter(val departmentPage: DepartmentPage) : RecyclerView.Adapter<WorkersListHolder>() {
+class ViewPagerAdapter(val departmentPage: DepartmentPage, val navigator: Navigator) : RecyclerView.Adapter<ViewPagerAdapter.WorkersListHolder>() {
 
     var departments: List<Department> = mutableListOf()
         set(value) {
@@ -48,14 +48,12 @@ class ViewPagerAdapter(val departmentPage: DepartmentPage) : RecyclerView.Adapte
         return departments.size
     }
 
-}
-
-class WorkersListHolder(
-    val bindingWorkersList: ItemWorkersListBinding
+    inner class WorkersListHolder(
+            val bindingWorkersList: ItemWorkersListBinding
     ): RecyclerView.ViewHolder(bindingWorkersList.root) {
 
         fun createRecyclerView(context: Context ,workerList: List<Worker>?) {
-            val workersListAdapter = WorkersListAdapter()
+            val workersListAdapter = WorkersListAdapter(navigator)
             if (workerList !== null) {
                 workersListAdapter.workerList = workerList
                 val layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
@@ -65,3 +63,5 @@ class WorkersListHolder(
         }
 
     }
+
+}

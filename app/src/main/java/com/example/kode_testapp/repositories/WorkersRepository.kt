@@ -8,7 +8,7 @@ import io.reactivex.schedulers.Schedulers
 class WorkersRepository(private val workersApi: WorkersApi) {
 
     @Volatile
-    private var workersInMemoryCache: List<Worker> = ArrayList()
+    var workersInMemoryCache: List<Worker> = ArrayList()
 
     fun loadWorkers(): Single<List<Worker>> {
         return workersApi.getWorkerList()

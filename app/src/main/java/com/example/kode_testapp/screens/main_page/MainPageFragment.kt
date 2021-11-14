@@ -5,9 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
+import com.example.kode_testapp.R
+import com.example.kode_testapp.adapters.Navigator
 import com.example.kode_testapp.adapters.ViewPagerAdapter
 import com.example.kode_testapp.databinding.FragmentMainBinding
+import com.example.kode_testapp.screens.details_page.DetailsPageFragment
 import com.example.kode_testapp.screens.factory
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -18,6 +22,18 @@ class MainPageFragment : Fragment() {
     var binding: FragmentMainBinding? = null
 
     lateinit var adapter: ViewPagerAdapter
+
+    private val navigator: Navigator = { id ->
+        val fragment = DetailsPageFragment().apply {
+            arguments = Bundle().apply {
+                putString("ID_WORKER", id)
+            }
+        }
+        parentFragmentManager.beginTransaction()
+        .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+        .commit()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,7 +63,7 @@ class MainPageFragment : Fragment() {
         when {
             !workersUiState.isLoading && workersUiState.error == null -> {
 
-                adapter = ViewPagerAdapter(DepartmentPage(workersUiState.workers))
+                adapter = ViewPagerAdapter(DepartmentPage(workersUiState.workers), navigator)
                 adapter.departments = mainPageViewModel.app.departmentList
                 binding!!.viewPager2.adapter = adapter
 

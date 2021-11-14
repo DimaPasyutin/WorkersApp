@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.kode_testapp.App
+import com.example.kode_testapp.screens.details_page.DetailsPageViewModel
 import com.example.kode_testapp.screens.main_page.MainPageViewModel
 
 class ViewModelFactory(
@@ -15,6 +16,9 @@ private val app: App
         val viewModel = when (modelClass) {
             MainPageViewModel::class.java -> {
                 MainPageViewModel(app)
+            }
+            DetailsPageViewModel::class.java -> {
+                DetailsPageViewModel(app.workersRepository)
             }
             else -> {
                 throw IllegalStateException("Unknown view model class")
