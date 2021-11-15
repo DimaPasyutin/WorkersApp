@@ -41,7 +41,6 @@ class DetailsPageViewModel(private val workersRepository: WorkersRepository) : V
             )
             uiState.value = newUiState
         }
-
     }
 
 }

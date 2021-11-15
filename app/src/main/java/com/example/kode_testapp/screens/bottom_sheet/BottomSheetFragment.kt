@@ -9,7 +9,7 @@ import com.example.kode_testapp.R
 import com.example.kode_testapp.databinding.BottomSheetFragmentBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class BottomSheetFragment: BottomSheetDialogFragment() {
+class BottomSheetFragment : BottomSheetDialogFragment() {
 
     var binding: BottomSheetFragmentBinding? = null
 
@@ -17,7 +17,8 @@ class BottomSheetFragment: BottomSheetDialogFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {binding = BottomSheetFragmentBinding.inflate(layoutInflater, container, false)
+    ): View {
+        binding = BottomSheetFragmentBinding.inflate(layoutInflater, container, false)
         return binding!!.root
     }
 
@@ -25,8 +26,16 @@ class BottomSheetFragment: BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         binding!!.radioGroup.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
-                R.id.sorting_by_birthday -> Toast.makeText(requireContext(), "sorting_by_birthday", Toast.LENGTH_SHORT).show()
-                R.id.sort_alphabetically -> Toast.makeText(requireContext(), "sort_alphabetically", Toast.LENGTH_SHORT).show()
+                R.id.sorting_by_birthday -> Toast.makeText(
+                    requireContext(),
+                    "Не успел",
+                    Toast.LENGTH_SHORT
+                ).show()
+                R.id.sort_alphabetically -> Toast.makeText(
+                    requireContext(),
+                    "Не успел",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }

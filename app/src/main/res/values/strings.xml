@@ -21,5 +21,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hint_search_worker">Введите имя, тег, почту...</string>
+    <string name="we_not_find_nothing">Мы ничего не нашли</string>
+    <string name="uncorrect_data">Попробуйте скорректировать запрос</string>
 
 </resources>

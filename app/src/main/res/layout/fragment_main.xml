@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".screens.main_page.MainPageFragment">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -56,6 +57,7 @@
             android:id="@+id/tab_layout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             android:layout_marginStart="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -73,6 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="22dp"
+            android:background="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -142,6 +145,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/space_view_problem" />
 
+        <ImageView
+            android:id="@+id/image_view_not_find"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:src="@drawable/glass_1f50d"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/space_view_problem" />
+
         <TextView
             android:id="@+id/first_line"
             android:layout_width="match_parent"
@@ -161,6 +174,24 @@
             app:layout_constraintTop_toBottomOf="@id/image_view_problem" />
 
         <TextView
+            android:id="@+id/first_line_not_find"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="center_horizontal"
+            android:text="@string/we_not_find_nothing"
+            android:textAllCaps="false"
+            android:textColor="@color/black_text"
+            android:textSize="17sp"
+            android:textStyle="normal"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/image_view_problem" />
+
+        <TextView
             android:id="@+id/second_line"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -169,6 +200,24 @@
             android:layout_marginEnd="16dp"
             android:gravity="center_horizontal"
             android:text="@string/second_line_message_error"
+            android:textAllCaps="false"
+            android:textColor="@color/grey_teg_worker"
+            android:textSize="16sp"
+            android:textStyle="normal"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/first_line" />
+
+        <TextView
+            android:id="@+id/second_line_not_find"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="center_horizontal"
+            android:text="@string/uncorrect_data"
             android:textAllCaps="false"
             android:textColor="@color/grey_teg_worker"
             android:textSize="16sp"

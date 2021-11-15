@@ -67,7 +67,7 @@ class DetailsPageFragment : Fragment() {
                         .circleCrop()
                         .into(imageViewWorker)
                     textViewFullName.text = "${worker.firstName} ${worker.lastName}"
-                    textViewDepartment.text = worker.department.substring(0, 1).toUpperCase() + worker.department.substring(1)
+                    textViewDepartment.text = worker.departmentType.toString()
                     textViewDateBirthday.text = formatDate(worker.birthday)
                     textViewUserTag.text = worker.userTag.toLowerCase()
                     textViewAge.text = calculatePeriod(worker.birthday)
@@ -76,7 +76,7 @@ class DetailsPageFragment : Fragment() {
                     stripUnderlines(textViewPhoneNumber)
 
                     imageViewButtonBack.setOnClickListener {
-                        this@DetailsPageFragment.requireActivity().onBackPressed()
+                        this@DetailsPageFragment.requireActivity().supportFragmentManager.popBackStack()
                     }
                 }
             }

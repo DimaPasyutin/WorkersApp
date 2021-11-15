@@ -5,8 +5,8 @@ import com.example.kode_testapp.pojo.DepartmentType
 
 class DepartmentStorage(private val departmentNameProvider: DepartmentNameProvider) {
 
+    @Volatile
     private var departments: List<Department> = emptyList()
-    private var currentPosition = 0
 
     fun getDepartments(): List<Department> {
         initDepartments()
@@ -19,7 +19,6 @@ class DepartmentStorage(private val departmentNameProvider: DepartmentNameProvid
         departments = DepartmentType.values().map { departmentType ->
             Department(
                 name = departmentNameProvider.provideName(departmentType),
-                position = currentPosition++,
                 departmentType = departmentType
             )
         }

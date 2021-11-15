@@ -15,6 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class App: Application() {
 
     lateinit var workersApi: WorkersApi
+    lateinit var departmentStorage: DepartmentStorage
 
     var departmentList = emptyList<Department>()
 
@@ -48,7 +49,7 @@ class App: Application() {
 
     private fun initDepartmentList() {
         val resourceDepartmentNameProvider = ResourceDepartmentNameProvider(applicationContext)
-        val departmentStorage = DepartmentStorage(resourceDepartmentNameProvider)
+        departmentStorage = DepartmentStorage(resourceDepartmentNameProvider)
         departmentList = departmentStorage.getDepartments()
     }
 

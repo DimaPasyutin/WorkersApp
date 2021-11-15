@@ -1,11 +1,8 @@
 package com.example.kode_testapp.pojo
 
-
-
-class Department (
-val name: String,
-val position: Int,
-val departmentType: DepartmentType
+class Department(
+    val name: String,
+    val departmentType: DepartmentType
 )
 
 enum class DepartmentType {
