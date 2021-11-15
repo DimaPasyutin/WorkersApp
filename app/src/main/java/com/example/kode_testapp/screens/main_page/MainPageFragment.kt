@@ -1,15 +1,19 @@
 package com.example.kode_testapp.screens.main_page
 
+import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.kode_testapp.R
 import com.example.kode_testapp.adapters.Navigator
 import com.example.kode_testapp.adapters.ViewPagerAdapter
 import com.example.kode_testapp.databinding.FragmentMainBinding
+import com.example.kode_testapp.screens.bottom_sheet.BottomSheetFragment
 import com.example.kode_testapp.screens.details_page.DetailsPageFragment
 import com.example.kode_testapp.screens.factory
 import com.google.android.material.tabs.TabLayoutMediator
@@ -52,8 +56,29 @@ class MainPageFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        mainPageViewModel.uiStateChanges.observe( viewLifecycleOwner, { workersUiState ->
+        mainPageViewModel.uiStateChanges.observe(viewLifecycleOwner, { workersUiState ->
             renderState(workersUiState)
+        })
+
+        binding!!.searchBar.setOnClickListener {
+            val bottomSheetFragment = BottomSheetFragment()
+            bottomSheetFragment.show(parentFragmentManager, null)
+        }
+
+        binding!!.searchBar.setOnTouchListener(object : View.OnTouchListener {
+
+            @SuppressLint("ClickableViewAccessibility")
+            override fun onTouch(v: View, event: MotionEvent): Boolean {
+                val DRAWABLE_RIGHT = 2
+                if(event.action == MotionEvent.ACTION_UP) {
+                    if(event.rawX >= (binding!!.searchBar.right - binding!!.searchBar.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
+                        Toast.makeText(requireContext(), "done", Toast.LENGTH_SHORT).show()
+                        return true;
+                    }
+                }
+                return false;
+            }
+
         })
 
     }
@@ -66,7 +91,7 @@ class MainPageFragment : Fragment() {
                 adapter.departments = mainPageViewModel.app.departmentList
                 binding!!.viewPager2.adapter = adapter
 
-                TabLayoutMediator(binding!!.tabLayout, binding!!.viewPager2){ tab,position->
+                TabLayoutMediator(binding!!.tabLayout, binding!!.viewPager2){ tab, position->
                     if (mainPageViewModel.app.departmentList[position].position == position) {
                         tab.text = mainPageViewModel.app.departmentList[position].name
                     } else {
