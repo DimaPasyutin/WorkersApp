@@ -1,7 +1,7 @@
 package com.example.kode_testapp
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.kode_testapp.screens.main_page.MainPageFragment
 
 class MainActivity : AppCompatActivity() {
