@@ -60,11 +60,6 @@ class MainPageFragment : Fragment() {
             renderState(workersUiState)
         })
 
-        binding!!.searchBar.setOnClickListener {
-            val bottomSheetFragment = BottomSheetFragment()
-            bottomSheetFragment.show(parentFragmentManager, null)
-        }
-
         binding!!.searchBar.setOnTouchListener(object : View.OnTouchListener {
 
             @SuppressLint("ClickableViewAccessibility")
@@ -72,7 +67,8 @@ class MainPageFragment : Fragment() {
                 val DRAWABLE_RIGHT = 2
                 if(event.action == MotionEvent.ACTION_UP) {
                     if(event.rawX >= (binding!!.searchBar.right - binding!!.searchBar.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
-                        Toast.makeText(requireContext(), "done", Toast.LENGTH_SHORT).show()
+                        val bottomSheetFragment = BottomSheetFragment()
+                        bottomSheetFragment.show(parentFragmentManager, null)
                         return true;
                     }
                 }
